@@ -1,0 +1,8 @@
+services:
+  dac:
+    image: dac-dev
+    build: 
+      dockerfile: ./Dockerfile
+    container_name: dac-dev
+    volumes:
+      - ./src:/src/
