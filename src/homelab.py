@@ -12,7 +12,6 @@ from diagrams.aws.database import RDS
 from diagrams.aws.network import ELB
 
 graph_attr = {
-    "fontsize": "45",
     "bgcolor": "transparent"
 }
 
