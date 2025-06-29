@@ -17,8 +17,9 @@ graph_attr = {
 }
 
 with Diagram("Network", show=False, graph_attr=graph_attr ):
-    wan1 = Custom("WAN1", "img/wan.png")
-    wan2 = Custom("WAN2", "img/wan.png")
+    with Cluster("Internet"):
+        wan1 = Custom("WAN1", "img/wan.png")
+        wan2 = Custom("WAN2", "img/wan.png")
     with Cluster("10.2.50.1/24"):    
         mikrotik = Custom("Mikrotik","img/mikrotik.png")
         [wan1,wan2] >> mikrotik >> Switch("TP-Link Switch 2.5G") >> Pve("Proxmox-Hypervisor")
