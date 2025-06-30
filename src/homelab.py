@@ -26,6 +26,10 @@ with Diagram("Network", show=False, graph_attr=graph_attr ):
 with Diagram("Apps", show=False, graph_attr=graph_attr):
     with Cluster("Proxmox"):
          truenas = Custom("Truenas Scale", "img/truenas.png")
-         Ubuntu("Docker Host 1") >> [Traefik("Traefik-1"), Docker("Pihole"), Docker("Immich"), Docker("OpenSpeedTest")]
-         Ubuntu("Docker Host 2") >> [Traefik("Traefik-2"), Docker("Unifi Controller")]
+         pihole =  Custom ("Pihole", "img/pihole.png")
+         openspeedtest =  Custom ("Open Speed Test", "img/openspeedtest.png")
+         unifi =  Custom ("Unifi Network Controller", "img/unifi.png")
+         immich =  Custom ("Immich", "img/immich.png")
+         Ubuntu("Docker Host 1") >> [Traefik("Traefik-1"), pihole, immich, openspeedtest]
+         Ubuntu("Docker Host 2") >> [Traefik("Traefik-2"), unifi]
          truenas
