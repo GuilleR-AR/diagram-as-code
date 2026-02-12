@@ -38,11 +38,12 @@ with Diagram("Apps", show=False, graph_attr=graph_attr):
         Ubuntu("Docker Host 1") - dockerhost1
         truenas
     with Cluster("Proxmox2"):
-        with Cluster("Docker Host 2"): 
+        with Cluster("Docker Host 2"):
+            pihole2 =  Custom ("Pihole2", "img/pihole.png") 
             unifi =  Custom ("Unifi Network Controller", "img/unifi.png")
             uptimekuma = Custom ("Uptime Kuma", "img/uptimekuma.png")
             traefik2 = Traefik("Traefik-2")
-            dockerhost2 = [traefik2, unifi, uptimekuma]
+            dockerhost2 = [pihole2, traefik2, unifi, uptimekuma]
         Ubuntu("Docker Host 2") - dockerhost2
 
 with Diagram("Homelab", show=False, graph_attr=graph_attr):
@@ -66,10 +67,11 @@ with Diagram("Homelab", show=False, graph_attr=graph_attr):
                 switch - truenas
             with Cluster("Proxmox2"):
                 with Cluster("Docker Host 2"): 
+                    pihole2 =  Custom ("Pihole2", "img/pihole.png")
                     unifi =  Custom ("Unifi Network Controller", "img/unifi.png")
                     uptimekuma = Custom ("Uptime Kuma", "img/uptimekuma.png")
                     traefik2 = Traefik("Traefik-2")
-                    dockerhost2 = [traefik2, unifi, uptimekuma]
+                    dockerhost2 = [pihole2, traefik2, unifi, uptimekuma]
                 switch - Ubuntu("Docker Host 2") - dockerhost2
             [wan1,wan2] >> mikrotik >> switch >> ap
             
