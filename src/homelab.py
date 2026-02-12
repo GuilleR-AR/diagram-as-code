@@ -40,8 +40,9 @@ with Diagram("Apps", show=False, graph_attr=graph_attr):
     with Cluster("Proxmox2"):
         with Cluster("Docker Host 2"): 
             unifi =  Custom ("Unifi Network Controller", "img/unifi.png")
+            uptimekuma = Custom ("Immich", "img/uptimekuma.png")
             traefik2 = Traefik("Traefik-2")
-            dockerhost2 = [traefik2, unifi]
+            dockerhost2 = [traefik2, unifi, uptimekuma]
         Ubuntu("Docker Host 2") - dockerhost2
 
 with Diagram("Homelab", show=False, graph_attr=graph_attr):
@@ -66,8 +67,9 @@ with Diagram("Homelab", show=False, graph_attr=graph_attr):
             with Cluster("Proxmox2"):
                 with Cluster("Docker Host 2"): 
                     unifi =  Custom ("Unifi Network Controller", "img/unifi.png")
+                    uptimekuma = Custom ("Immich", "img/uptimekuma.png")
                     traefik2 = Traefik("Traefik-2")
-                    dockerhost2 = [traefik2, unifi]
+                    dockerhost2 = [traefik2, unifi, uptimekuma]
                 switch - Ubuntu("Docker Host 2") - dockerhost2
             [wan1,wan2] >> mikrotik >> switch >> ap
             
